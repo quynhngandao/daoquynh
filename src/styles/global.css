@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* ── Fonts ──────────────────────────────── */
+    --font-display: 'Sora', system-ui, sans-serif;
+    --font-body: 'Sora', system-ui, sans-serif;
+    --font-sans: 'Sora', system-ui, sans-serif;
+    --font-mono: 'Sora', system-ui, sans-serif;
+
+    /* ── Fluid type scale (clamp) ───────────── */
+    --text-logo: clamp(1.5rem, 1.1rem + 1.2vw, 2.5rem);
+    --text-nav: clamp(0.875rem, 0.8rem + 0.3vw, 1.125rem);
+    --text-hero-intro: clamp(2.25rem, 1.4rem + 4vw, 5.5rem);
+    --text-hero-bg: clamp(5.5rem, 1.8rem + 18vw, 28rem);
+    --text-role: clamp(1.5rem, 1rem + 2.4vw, 4.25rem);
+    --text-body: clamp(1rem, 0.9rem + 0.4vw, 1.25rem);
+    --text-button: clamp(0.875rem, 0.8rem + 0.3vw, 1.125rem);
+
+    /* ── Sky palette ────────────────────────── */
+    --sky: #51b0f4;
+    --sky-deep: #2f95ee;
+    --sky-light: #87c2f4;
+
+    /* ── Navy / blue ────────────────────────── */
+    --navy-cloud: #04285f;
+    --navy: #245f9c;
+
+    /* ── Neutrals ───────────────────────────── */
+    --white: #fafbfb;
+    --ink: #1d1c1c;
+    --gray-muted: #9e9d9c;
+
+    /* ── Character / warm tones ─────────────── */
+    --skin: #f9dcb2;
+    --skin-shadow: #efb996;
+    --blush: #e49871;
+    --brown: #4f3122;
+  }
+}
+
+@layer components {
+  .logo {
+    font-size: var(--text-logo);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+  }
+
+  .nav-link {
+    font-size: var(--text-nav);
+    font-weight: 500;
+  }
+
+  .hero-intro {
+    font-size: var(--text-hero-intro);
+    line-height: 1.05;
+    font-weight: 500;
+    letter-spacing: -0.04em;
+  }
+
+  .hero-bg-name {
+    font-size: var(--text-hero-bg);
+    line-height: 0.8;
+    font-weight: 900;
+    letter-spacing: -0.08em;
+    position: absolute;
+    z-index: 1;
+    white-space: nowrap;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .hero-role {
+    font-size: var(--text-role);
+    line-height: 1.05;
+    font-weight: 500;
+    letter-spacing: -0.04em;
+  }
+
+  .btn {
+    font-size: var(--text-button);
+    font-weight: 700;
+  }
+
+  .body-text {
+    font-size: var(--text-body);
+  }
+}
+
+/* Mobile overrides for the giant background name */
+@media (max-width: 767px) {
+  .hero-bg-name {
+    font-size: clamp(5rem, 28vw, 8rem);
+    top: 42%;
+  }
+
+  .hero-intro {
+    max-width: 10ch;
+  }
+
+  .hero-role {
+    max-width: 12ch;
+  }
+}

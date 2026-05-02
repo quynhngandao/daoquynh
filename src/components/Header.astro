@@ -1,0 +1,57 @@
+---
+const navLinks = [
+  { label: 'About', href: '#about' },
+  { label: 'Project', href: '#project' },
+  { label: 'Experience', href: '#experience' },
+  { label: 'Photography', href: '#photography' },
+  { label: 'Contact Me', href: '#contact' },
+];
+---
+
+<header class="border-white/10 fixed inset-x-0 top-0 z-50 border-b bg-black/20 backdrop-blur-sm">
+  <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+    <a href="/" class="logo text-white transition-opacity hover:opacity-80"> Quynh Dao </a>
+
+    <!-- Desktop nav -->
+    <ul class="hidden items-center gap-8 md:flex">
+      {
+        navLinks.map(({ label, href }) => (
+          <li>
+            <a href={href} class="nav-link text-white/70 transition-colors hover:text-white">
+              {label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <!-- Mobile menu trigger (pure CSS) -->
+    <input type="checkbox" id="menu-toggle" class="peer hidden" />
+    <label
+      for="menu-toggle"
+      class="text-white/70 cursor-pointer hover:text-white md:hidden"
+      aria-label="Toggle menu"
+    >
+      <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </label>
+
+    <!-- Mobile dropdown -->
+    <div
+      class="border-white/10 absolute inset-x-0 top-full hidden flex-col gap-5 border-b bg-black/80 px-6 py-4 backdrop-blur-sm peer-checked:flex md:hidden"
+    >
+      {
+        navLinks.map(({ label, href }) => (
+          <a href={href} class="nav-link text-white/80 transition-colors hover:text-white">
+            {label}
+          </a>
+        ))
+      }
+    </div>
+  </nav>
+</header>

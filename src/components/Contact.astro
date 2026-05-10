@@ -4,7 +4,7 @@ import Footer from '@/components/Footer.astro';
 const emailAddress = 'quynhngandao@outlook.com';
 ---
 
-<section id="contact" class="sky-section-gradient px-6 py-24">
+<section id="contact" class="sky-section-gradient relative px-6 py-24 pb-20">
   <div
     class="border-white/15 bg-white/10 relative z-10 mx-auto grid max-w-5xl gap-10 rounded-[2rem] border p-8 shadow-[0_24px_80px_rgba(4,40,95,0.18)] backdrop-blur-sm md:grid-cols-[0.9fr_1.1fr] md:p-10"
   >
@@ -63,6 +63,16 @@ const emailAddress = 'quynhngandao@outlook.com';
       </a>
     </form>
   </div>
+
+  <a
+    href="#"
+    class="absolute inset-x-0 bottom-8 z-20 flex animate-bounce justify-center text-[#04285f]/60 transition-colors hover:text-[#04285f]"
+    aria-label="Back to top"
+  >
+    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+    </svg>
+  </a>
 </section>
 
 <script define:vars={{ emailAddress }}>

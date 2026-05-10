@@ -27,6 +27,13 @@
     /* ── Navy / blue ────────────────────────── */
     --navy-cloud: #04285f;
     --navy: #245f9c;
+    --navy-deep: #0b2f6f;
+    --navy-ink: #17325d;
+
+    /* ── Sky tints ──────────────────────────── */
+    --sky-frost: #eef7ff;
+    --sky-border: #d6e8f8;
+    --sky-wash: #f7fbff;
 
     /* ── Neutrals ───────────────────────────── */
     --white: #fafbfb;
@@ -38,6 +45,9 @@
     --skin-shadow: #efb996;
     --blush: #e49871;
     --brown: #4f3122;
+
+    /* ── Accent ──────────────────────────────── */
+    --bubble: #FEE9A8;
   }
 }
 

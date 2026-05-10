@@ -30,6 +30,13 @@ export default {
         // ── Navy / blue ──────────────────────────
         'navy-cloud': 'var(--navy-cloud)',
         navy: 'var(--navy)',
+        'navy-deep': '#0b2f6f',
+        'navy-ink': '#17325d',
+
+        // ── Sky tints ────────────────────────────
+        'sky-frost': '#eef7ff',
+        'sky-border': '#d6e8f8',
+        'sky-wash': '#f7fbff',
 
         // ── Neutrals ─────────────────────────────
         white: 'var(--white)',
@@ -41,6 +48,9 @@ export default {
         'skin-shadow': 'var(--skin-shadow)',
         blush: 'var(--blush)',
         brown: 'var(--brown)',
+
+        // ── Accent ───────────────────────────────
+        bubble: '#FEE9A8',
       },
     },
   },

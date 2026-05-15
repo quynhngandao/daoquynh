@@ -1,8 +1,11 @@
 ---
+import '@/styles/projects.css';
+
 interface Project {
   title: string;
   description: string;
-  image: string;
+  image?: string;
+  video?: string;
   imageAlt: string;
   repo?: string;
   href?: string;
@@ -30,7 +33,7 @@ const projects: Project[] = [
     title: 'DevDogCodeCat',
     description:
       'React Native and Angular quiz platform where software engineers can practice interview questions generated through the OpenAI API',
-    image: '/assets/other/hireme-mobile.gif',
+    video: '/assets/video/hireme-mobile.mp4',
     imageAlt: 'DevDogCodeCat mobile app',
     repo: 'https://github.com/PleaseHireMeNow',
     phoneFrame: true,
@@ -52,14 +55,26 @@ const projects: Project[] = [
 
     <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {
-        projects.map(({ title, description, image, imageAlt, repo, href, phoneFrame }) => (
+        projects.map(({ title, description, image, video, imageAlt, repo, href, phoneFrame }) => (
           <article class="project-card group flex flex-col">
             {phoneFrame ? (
               <div class="bg-white/30 flex justify-center rounded-t-[1rem] pb-3 pt-5">
                 <div class="phone-viewport">
                   <div class="device device-iphone-14-pro device-silver project-phone-device">
                     <div class="device-frame">
-                      <img class="device-screen" src={image} alt={imageAlt} loading="lazy" />
+                      {video ? (
+                        <video
+                          class="device-screen"
+                          src={video}
+                          autoplay
+                          muted
+                          loop
+                          playsinline
+                          aria-label={imageAlt}
+                        />
+                      ) : (
+                        <img class="device-screen" src={image} alt={imageAlt} loading="lazy" />
+                      )}
                     </div>
                     <div class="device-stripe" />
                     <div class="device-header" />
@@ -148,89 +163,3 @@ const projects: Project[] = [
     </svg>
   </a>
 </section>
-
-<style>
-  /* Card — matches Experience timeline-card gradient */
-  .project-card {
-    background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.55) 0%,
-      rgba(255, 255, 255, 0.25) 100%
-    );
-    -webkit-backdrop-filter: blur(12px);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    border-radius: 1rem;
-    box-shadow:
-      0 4px 16px rgba(36, 95, 156, 0.1),
-      inset 0 1px 0 rgba(255, 255, 255, 0.8);
-    overflow: hidden;
-    transition:
-      transform 250ms ease,
-      box-shadow 250ms ease;
-  }
-
-  .project-card:hover {
-    transform: translateY(-4px);
-    box-shadow:
-      0 12px 32px rgba(36, 95, 156, 0.2),
-      inset 0 1px 0 rgba(255, 255, 255, 0.9);
-  }
-
-  /*
-   * phone-viewport: fixed visual size of scaled iPhone 14 Pro (428×868 at 0.24 = 103×208px).
-   * The device renders from top-left so layout overflow is hidden without clipping the visual.
-   */
-  .phone-viewport {
-    position: relative;
-    width: 103px;
-    height: 208px;
-    overflow: hidden;
-    flex-shrink: 0;
-  }
-
-  .project-phone-device {
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: scale(0.24);
-    transform-origin: top left;
-  }
-
-  /* Project button */
-  .project-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.35rem 0.85rem;
-    border-radius: 9999px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    font-family: 'Sora', system-ui, sans-serif;
-    background: #04285f;
-    color: #fafbfb;
-    border: 1.5px solid #04285f;
-    text-decoration: none;
-    transition:
-      background 150ms ease,
-      color 150ms ease,
-      transform 150ms ease;
-  }
-
-  .project-btn:hover {
-    background: #0b2f6f;
-    border-color: #0b2f6f;
-    transform: translateY(-1px);
-  }
-
-  .project-btn--outline {
-    background: transparent;
-    color: #04285f;
-  }
-
-  .project-btn--outline:hover {
-    background: #04285f10;
-    border-color: #0b2f6f;
-    color: #0b2f6f;
-  }
-</style>

@@ -37,13 +37,36 @@ const photos = Array.from({ length: totalPhotos }, (_, i) => {
       {
         photos.map((photo, i) => (
           <div class:list={['photo-item', i >= 20 && 'hidden']} data-photo-index={i}>
-            <img
-              src={photo.src}
-              alt={photo.alt}
-              loading="lazy"
-              decoding="async"
-              class="w-full rounded-xl shadow-lg transition-transform duration-300 hover:scale-[1.02]"
-            />
+            <button
+              class="photo-trigger group relative block w-full cursor-zoom-in"
+              data-src={photo.src}
+              data-alt={photo.alt}
+              aria-label={`View ${photo.alt} fullscreen`}
+            >
+              <img
+                src={photo.src}
+                alt={photo.alt}
+                loading="lazy"
+                decoding="async"
+                class="ring-white/20 w-full rounded-xl shadow-lg ring-1 transition-transform duration-300 group-hover:scale-[1.02]"
+              />
+              <span class="pointer-events-none absolute right-2 top-2 rounded-full bg-black/40 p-1.5 opacity-0 backdrop-blur-sm transition-opacity duration-200 group-hover:opacity-100">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-4 w-4 text-white"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+                  <circle cx="12" cy="12" r="3" />
+                </svg>
+              </span>
+            </button>
           </div>
         ))
       }
@@ -56,6 +79,37 @@ const photos = Array.from({ length: totalPhotos }, (_, i) => {
       >
         Load more
       </button>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div
+    id="lightbox"
+    class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 backdrop-blur-sm"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Photo lightbox"
+  >
+    <div class="relative">
+      <button
+        id="lightbox-close"
+        class="absolute right-2 top-2 z-10 rounded-full bg-black/40 p-1.5 text-white backdrop-blur-sm transition-colors hover:bg-black/60"
+        aria-label="Close"
+      >
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+      <img
+        id="lightbox-img"
+        src=""
+        alt=""
+        class="max-h-[90vh] max-w-[90vw] rounded-xl object-contain shadow-2xl"
+      />
     </div>
   </div>
 
@@ -95,4 +149,37 @@ const photos = Array.from({ length: totalPhotos }, (_, i) => {
   if (items.length <= 20) {
     wrap.classList.add('hidden');
   }
+
+  // Lightbox
+  const lightbox = document.getElementById('lightbox')!;
+  const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement;
+  const lightboxClose = document.getElementById('lightbox-close')!;
+
+  function openLightbox(src: string, alt: string) {
+    lightboxImg.src = src;
+    lightboxImg.alt = alt;
+    lightbox.classList.remove('hidden');
+    lightbox.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.add('hidden');
+    lightbox.classList.remove('flex');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll<HTMLButtonElement>('.photo-trigger').forEach((trigger) => {
+    trigger.addEventListener('click', () => {
+      openLightbox(trigger.dataset.src!, trigger.dataset.alt!);
+    });
+  });
+
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeLightbox();
+  });
 </script>

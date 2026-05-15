@@ -1,0 +1,140 @@
+---
+import '@/styles/experience.css';
+
+interface TimelineEntry {
+  id: number;
+  date: string;
+  title: string;
+  subtitle: string;
+  bullets: string[];
+  side: 'left' | 'right';
+}
+
+const entries: TimelineEntry[] = [
+  {
+    id: 1,
+    date: 'Sept 2014 – May 2016',
+    title: 'North Hennepin College',
+    subtitle: 'Associate of Arts, Liberal Arts',
+    bullets: ['PostSecondary Enrollment Options'],
+    side: 'right',
+  },
+  {
+    id: 2,
+    date: 'Sept 2016 – May 2020',
+    title: 'University of Minnesota',
+    subtitle: 'Bachelor of Science, Animal Science',
+    bullets: [
+      'Studied Animal Science on a pre-med track',
+      'Served as a board member for student groups',
+      'Worked in service, tutoring, research, and healthcare',
+      'Volunteered at hospitals and animal shelters',
+    ],
+    side: 'left',
+  },
+  {
+    id: 3,
+    date: 'May 2023 – Sept 2023',
+    title: 'Prime Digital Academy',
+    subtitle: 'Full-Stack Software Engineering Certification',
+    bullets: [
+      'Completed a 20-wk coding bootcamp (60+ hr/wk)',
+      'Built personal and collaborative full-stack projects',
+      'Participated in personal development and career prep',
+    ],
+    side: 'right',
+  },
+  {
+    id: 4,
+    date: 'Sept 2023',
+    title: 'Continuing…',
+    subtitle: '',
+    bullets: [
+      'Contributed to open-source projects on GitHub',
+      'Attended networking events within the tech community',
+      'Attended Frontend Masters coding workshops',
+      'Built DevDogCodeCat along with bootcamp alumni',
+      'Worked as a freelance Solana blockchain developer'
+    ],
+    side: 'left',
+  },
+  {
+    id: 5,
+    date: 'Nov 2023 – Current',
+    title: 'Star Tribune',
+    subtitle: 'Software Engineer',
+    bullets: [
+      'CMS Migration – Migrated Legacy Content Management System Migration',
+      'Website Redesign & Rebrand – Architecture Redesign & Transformation to React, Next.js, and GraphQL',
+      'Piano Platform – Authentication & Analytics Integration',
+      'Article Toolkit – Immersive Article Template Implementation',
+      'Strib Varsity – High School Sports Platform Implementation',
+      'Content Bot - Slack Bot with AWS Event Driven Architecture Implementation',
+    ],
+    side: 'right',
+  },
+];
+---
+
+<section
+  id="experience"
+  class="sky-section-gradient relative px-4 py-20 md:px-8 md:py-28 pb-24"
+>
+  <div class="mx-auto w-full max-w-5xl space-y-10">
+
+    <h2
+      class="text-center text-2xl font-extrabold uppercase tracking-widest sm:text-3xl lg:text-4xl"
+      style="color: #04285f"
+    >
+      Experience
+    </h2>
+
+    <div class="timeline">
+      <div class="center-line" aria-hidden="true"></div>
+
+      {entries.map((entry) => (
+        <div class={`timeline-row ${entry.side}`}>
+          <!-- spacer: empty half on the opposite side of the card -->
+          <div class="timeline-spacer" aria-hidden="true"></div>
+
+          <!-- calendar marker centered on the line -->
+          <div class="timeline-marker" aria-hidden="true">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              aria-hidden="true"
+            >
+              <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+            </svg>
+          </div>
+
+          <!-- glass card -->
+          <div class="timeline-card">
+            <p class="timeline-card-date">{entry.date}</p>
+            <h3 class="timeline-card-title">{entry.title}</h3>
+            {entry.subtitle && (
+              <p class="timeline-card-subtitle">{entry.subtitle}</p>
+            )}
+            {entry.bullets.length > 0 && (
+              <ul class="timeline-card-bullets">
+                {entry.bullets.map((b) => <li>{b}</li>)}
+              </ul>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Scroll cue → #skills -->
+  <a
+    href="#skills"
+    class="absolute inset-x-0 bottom-8 flex animate-bounce justify-center text-[#04285f]/60 transition-colors hover:text-[#04285f]"
+    aria-label="Next section"
+  >
+    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </a>
+</section>

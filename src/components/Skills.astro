@@ -4,84 +4,234 @@ import '@/styles/skills.css';
 interface TechItem {
   id: number;
   title: string;
-  category: 'Frontend' | 'Backend' | 'Testing' | 'Design' | 'Analytics' | 'Other';
+  category: 'Frontend' | 'Backend' | 'Testing' | 'Design' | 'Other';
   icon: string;
   description: string;
 }
 
-const categories = ['All', 'Frontend', 'Backend', 'Testing', 'Design', 'Analytics', 'Other'];
+const categories = ['All', 'Frontend', 'Backend', 'Testing', 'Design', 'Other'];
 
 const techStack: TechItem[] = [
-  { id: 1,  title: 'JavaScript',   category: 'Frontend',  icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg',         description: 'Programming Language' },
-  { id: 2,  title: 'HTML/CSS',     category: 'Frontend',  icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg',                   description: 'Web Markup & Styling' },
-  { id: 3,  title: 'TypeScript',   category: 'Frontend',  icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg',         description: 'Typed JavaScript superset' },
-  { id: 4,  title: 'React',        category: 'Frontend',  icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg',                   description: 'JavaScript Library' },
-  { id: 5,  title: 'Next.js',      category: 'Frontend',  icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg',                 description: 'React Framework' },
-  { id: 6,  title: 'React Native', category: 'Frontend',  icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg',                   description: 'Mobile Development' },
-  { id: 7,  title: 'Angular',      category: 'Frontend',  icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angularjs/angularjs-original.svg',           description: 'Web Framework' },
-  { id: 8,  title: 'Tailwind CSS', category: 'Frontend',  icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg',       description: 'CSS Framework' },
-  { id: 9,  title: 'Material UI',  category: 'Frontend',  icon: 'https://v4.mui.com/static/logo.png',                                                                   description: 'React Component Library' },
-  { id: 10, title: 'Node.js',      category: 'Backend',   icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg',                 description: 'JavaScript Runtime' },
-  { id: 11, title: 'PostgreSQL',   category: 'Backend',   icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg',         description: 'SQL Database' },
-  { id: 12, title: 'GraphQL',      category: 'Backend',   icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/graphql/graphql-plain.svg',                  description: 'API Query Language' },
-  { id: 13, title: 'Jest',         category: 'Testing',   icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jest/jest-plain.svg',                        description: 'Testing Framework' },
-  { id: 14, title: 'Cypress',      category: 'Testing',   icon: 'https://www.chromatic.com/integrations/cypress.svg',                                                   description: 'E2E Testing' },
-  { id: 15, title: 'Storybook',    category: 'Testing',   icon: 'https://avatars.githubusercontent.com/u/22632046?s=200&v=4',                                           description: 'UI Component Workshop' },
-  { id: 16, title: 'Chromatic',    category: 'Testing',   icon: 'https://static.intercomassets.com/avatars/1502568/square_128/custom_avatar-1567713303.png',             description: 'Visual Testing' },
-  { id: 17, title: 'Figma',        category: 'Design',    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg',                   description: 'UI/UX Design' },
-  { id: 18, title: 'Lightroom',    category: 'Design',    icon: 'https://upload.wikimedia.org/wikipedia/commons/b/b6/Adobe_Photoshop_Lightroom_CC_logo.svg',            description: 'Photo Editing' },
-  { id: 19, title: 'Canva',        category: 'Design',    icon: 'https://cdn-1.webcatalog.io/catalog/canva-cn/canva-cn-icon.png?v=1754269934555',                        description: 'Graphic Design' },
-  { id: 20, title: 'Piano',        category: 'Analytics', icon: 'https://media.licdn.com/dms/image/v2/D4E0BAQGNtMCt9RKDDg/company-logo_200_200/B4EZq7Ra4mJ0AI-/0/1764078497760/piano_io_logo?e=2147483647&v=beta&t=30JBaz9e4mTskAX7n_2fT1g8qWlc2idebUnhEy7NY0w', description: 'Data Analytics Platform' },
-  { id: 21, title: 'Optimizely',   category: 'Analytics', icon: 'https://app.optimizely.com/static/img/rebrand/rebrand-logo.svg',                                       description: 'Experimentation Platform' },
-  { id: 22, title: 'Git',          category: 'Other',     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg',                       description: 'Version Control' },
-  { id: 23, title: 'Vercel',       category: 'Other',     icon: 'https://assets.vercel.com/image/upload/front/favicon/vercel/180x180.png',                              description: 'Cloud Platform' },
-  { id: 24, title: 'AWS',          category: 'Other',     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg', description: 'Cloud Platform' },
+  {
+    id: 1,
+    title: 'JavaScript',
+    category: 'Frontend',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg',
+    description: 'Programming Language',
+  },
+  {
+    id: 2,
+    title: 'HTML/CSS',
+    category: 'Frontend',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg',
+    description: 'Web Markup & Styling',
+  },
+  {
+    id: 3,
+    title: 'TypeScript',
+    category: 'Frontend',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg',
+    description: 'Typed JavaScript superset',
+  },
+  {
+    id: 4,
+    title: 'React',
+    category: 'Frontend',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg',
+    description: 'JavaScript Library',
+  },
+  {
+    id: 5,
+    title: 'Next.js',
+    category: 'Frontend',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg',
+    description: 'React Framework',
+  },
+  {
+    id: 6,
+    title: 'React Native',
+    category: 'Frontend',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg',
+    description: 'Mobile Development',
+  },
+  {
+    id: 7,
+    title: 'Angular',
+    category: 'Frontend',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angularjs/angularjs-original.svg',
+    description: 'Web Framework',
+  },
+  {
+    id: 8,
+    title: 'Tailwind CSS',
+    category: 'Frontend',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg',
+    description: 'CSS Framework',
+  },
+  {
+    id: 9,
+    title: 'Material UI',
+    category: 'Frontend',
+    icon: 'https://v4.mui.com/static/logo.png',
+    description: 'React Component Library',
+  },
+  {
+    id: 10,
+    title: 'Node.js',
+    category: 'Backend',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg',
+    description: 'JavaScript Runtime',
+  },
+  {
+    id: 11,
+    title: 'PostgreSQL',
+    category: 'Backend',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg',
+    description: 'SQL Database',
+  },
+  {
+    id: 12,
+    title: 'GraphQL',
+    category: 'Backend',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/graphql/graphql-plain.svg',
+    description: 'API Query Language',
+  },
+  {
+    id: 13,
+    title: 'Jest',
+    category: 'Testing',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jest/jest-plain.svg',
+    description: 'Testing Framework',
+  },
+  {
+    id: 14,
+    title: 'Cypress',
+    category: 'Testing',
+    icon: 'https://www.chromatic.com/integrations/cypress.svg',
+    description: 'E2E Testing',
+  },
+  {
+    id: 15,
+    title: 'Storybook',
+    category: 'Testing',
+    icon: 'https://avatars.githubusercontent.com/u/22632046?s=200&v=4',
+    description: 'UI Component Workshop',
+  },
+  {
+    id: 16,
+    title: 'Chromatic',
+    category: 'Testing',
+    icon: 'https://static.intercomassets.com/avatars/1502568/square_128/custom_avatar-1567713303.png',
+    description: 'Visual Testing',
+  },
+  {
+    id: 17,
+    title: 'Figma',
+    category: 'Design',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg',
+    description: 'UI/UX Design',
+  },
+  {
+    id: 18,
+    title: 'Lightroom',
+    category: 'Design',
+    icon: 'https://upload.wikimedia.org/wikipedia/commons/b/b6/Adobe_Photoshop_Lightroom_CC_logo.svg',
+    description: 'Photo Editing',
+  },
+  {
+    id: 19,
+    title: 'Canva',
+    category: 'Design',
+    icon: 'https://cdn-1.webcatalog.io/catalog/canva-cn/canva-cn-icon.png?v=1754269934555',
+    description: 'Graphic Design',
+  },
+  {
+    id: 20,
+    title: 'Piano',
+    category: 'Other',
+    icon: 'https://media.licdn.com/dms/image/v2/D4E0BAQGNtMCt9RKDDg/company-logo_200_200/B4EZq7Ra4mJ0AI-/0/1764078497760/piano_io_logo?e=2147483647&v=beta&t=30JBaz9e4mTskAX7n_2fT1g8qWlc2idebUnhEy7NY0w',
+    description: 'Data Analytics Platform',
+  },
+  {
+    id: 21,
+    title: 'Optimizely',
+    category: 'Other',
+    icon: 'https://app.optimizely.com/static/img/rebrand/rebrand-logo.svg',
+    description: 'Experimentation Platform',
+  },
+  {
+    id: 22,
+    title: 'Git',
+    category: 'Other',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg',
+    description: 'Version Control',
+  },
+  {
+    id: 23,
+    title: 'Vercel',
+    category: 'Other',
+    icon: 'https://assets.vercel.com/image/upload/front/favicon/vercel/180x180.png',
+    description: 'Cloud Platform',
+  },
+  {
+    id: 24,
+    title: 'AWS',
+    category: 'Other',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg',
+    description: 'Cloud Platform',
+  },
 ];
 ---
 
-<section
-  id="skills"
-  class="sky-section-gradient relative px-4 py-20 md:px-8 md:py-28 pb-24"
->
+<section id="skills" class="sky-section-gradient relative px-4 py-20 pb-24 md:px-8 md:py-28">
   <div class="mx-auto w-full space-y-8">
-
-    <h2 class="text-center text-3xl font-extrabold uppercase tracking-widest md:text-4xl" style="color: #04285f">
+    <h2
+      class="text-center text-2xl font-extrabold uppercase tracking-widest sm:text-3xl lg:text-4xl"
+      style="color: #04285f"
+    >
       Skills
     </h2>
 
     <!-- Filter buttons -->
     <div class="flex flex-wrap justify-center gap-3">
-      {categories.map((cat, i) => (
-        <button
-          class={`skills-filter-btn${i === 0 ? ' active' : ''}`}
-          data-filter={cat.toLowerCase()}
-        >
-          {cat}
-        </button>
-      ))}
+      {
+        categories.map((cat, i) => (
+          <button
+            class={`skills-filter-btn${i === 0 ? ' active' : ''}`}
+            data-filter={cat.toLowerCase()}
+          >
+            {cat}
+          </button>
+        ))
+      }
     </div>
 
     <!-- Tech card grid -->
-    <div class="w-full flex flex-wrap justify-center gap-5 md:gap-6">
-      {techStack.map((tech) => (
-        <div
-          class="tech-card group rounded-2xl p-8 flex flex-col items-center text-center w-[calc(50%-10px)] sm:w-[calc(33.333%-14px)] lg:w-[calc(25%-18px)] xl:w-[calc(20%-20px)]"
-          data-category={tech.category.toLowerCase()}
-        >
-          <img
-            src={tech.icon}
-            alt={tech.title}
-            width="80"
-            height="80"
-            class="mb-5 h-20 w-20 object-contain transition-transform duration-300 group-hover:scale-110"
-            loading="lazy"
-          />
-          <h3 class="mb-1 text-base font-bold leading-tight" style="color: #04285f">{tech.title}</h3>
-          <p class="text-sm" style="color: #245f9c; opacity: 0.7">{tech.description}</p>
-        </div>
-      ))}
+    <div class="flex w-full flex-wrap justify-center gap-5 md:gap-6">
+      {
+        techStack.map((tech) => (
+          <div
+            class="tech-card group flex w-[calc(50%-10px)] flex-col items-center rounded-2xl p-4 text-center sm:w-[calc(33.333%-14px)] sm:p-6 md:w-[calc(33.333%-16px)] md:p-8 lg:w-[calc(25%-18px)] xl:w-[calc(20%-20px)]"
+            data-category={tech.category.toLowerCase()}
+          >
+            <img
+              src={tech.icon}
+              alt={tech.title}
+              width="80"
+              height="80"
+              class="mb-3 h-12 w-12 object-contain transition-transform duration-300 group-hover:scale-110 sm:h-16 sm:w-16 md:h-20 md:w-20"
+              loading="lazy"
+            />
+            <h3 class="mb-1 text-xs font-bold leading-tight sm:text-base" style="color: #04285f">
+              {tech.title}
+            </h3>
+            <p class="text-xs sm:text-sm" style="color: #245f9c; opacity: 0.7">
+              {tech.description}
+            </p>
+          </div>
+        ))
+      }
     </div>
-
   </div>
 
   <!-- Scroll cue -->
@@ -91,11 +241,11 @@ const techStack: TechItem[] = [
     aria-label="Next section"
   >
     <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"
+      ></path>
     </svg>
   </a>
 </section>
-
 
 <script>
   const buttons = document.querySelectorAll<HTMLButtonElement>('.skills-filter-btn');
@@ -130,15 +280,18 @@ const techStack: TechItem[] = [
 
       // Phase 2: animate in after exits finish
       toShow.forEach((card) => {
-        setTimeout(() => {
-          card.classList.add('is-entering');
-          card.classList.remove('hidden');
-          requestAnimationFrame(() => {
+        setTimeout(
+          () => {
+            card.classList.add('is-entering');
+            card.classList.remove('hidden');
             requestAnimationFrame(() => {
-              card.classList.remove('is-entering');
+              requestAnimationFrame(() => {
+                card.classList.remove('is-entering');
+              });
             });
-          });
-        }, toHide.length ? DURATION : 0);
+          },
+          toHide.length ? DURATION : 0
+        );
       });
     });
   });

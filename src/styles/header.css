@@ -2,6 +2,9 @@
   font-size: clamp(1rem, 0.85rem + 0.6vw, 1.25rem);
   font-weight: 700;
   letter-spacing: -0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .nav-link {
@@ -27,9 +30,11 @@
 #menu-btn[aria-expanded='true'] .hamburger-bar:nth-child(1) {
   transform: translateY(5.5px) rotate(45deg);
 }
+
 #menu-btn[aria-expanded='true'] .hamburger-bar:nth-child(2) {
   opacity: 0;
 }
+
 #menu-btn[aria-expanded='true'] .hamburger-bar:nth-child(3) {
   transform: translateY(-5.5px) rotate(-45deg);
 }

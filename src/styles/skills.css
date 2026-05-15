@@ -1,10 +1,10 @@
 .skills-filter-btn {
-  padding: 0.5rem 1.5rem;
+  padding: 0.35rem 1rem;
   border-radius: 9999px;
   border: 1.5px solid rgba(255, 255, 255, 0.7);
   background: rgba(255, 255, 255, 0.15);
   color: white;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   font-weight: 600;
   cursor: pointer;
   transition: background 150ms ease, color 150ms ease, border-color 150ms ease;
@@ -12,22 +12,29 @@
   -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
 }
-.skills-filter-btn.active {
-  background: #3d82c6;
-  color: white;
-  border-color: #3d82c6;
+
+@media (min-width: 640px) {
+  .skills-filter-btn {
+    padding: 0.5rem 1.5rem;
+    font-size: 0.875rem;
+  }
 }
+
+.skills-filter-btn.active {
+  background: rgba(255, 255, 255, 0.35);
+  color: white;
+  border-color: rgba(255, 255, 255, 0.95);
+}
+
 .skills-filter-btn:not(.active):hover {
   background: rgba(255, 255, 255, 0.3);
   border-color: rgba(255, 255, 255, 0.9);
 }
 
 .tech-card {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.55) 0%,
-    rgba(255, 255, 255, 0.25) 100%
-  );
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.55) 0%,
+      rgba(255, 255, 255, 0.25) 100%);
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.6);
@@ -37,17 +44,20 @@
   opacity: 1;
   transition: opacity 350ms ease, transform 350ms ease, box-shadow 250ms ease;
 }
+
 .tech-card:hover {
   box-shadow:
     0 8px 32px rgba(36, 95, 156, 0.18),
     inset 0 1px 0 rgba(255, 255, 255, 0.9);
   transform: translateY(-2px);
 }
+
 .tech-card.is-hiding,
 .tech-card.is-entering {
   opacity: 0;
   transform: scale(0.85) !important;
 }
+
 .tech-card.hidden {
   display: none;
 }

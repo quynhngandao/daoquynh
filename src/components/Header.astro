@@ -12,11 +12,13 @@ const navLinks = [
 <header class="fixed inset-x-0 top-0 z-50">
   <div class="bg-white/5 absolute inset-x-0 top-0 h-full backdrop-blur-md"></div>
 
-  <nav class="relative mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4">
+  <nav
+    class="relative mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-4 sm:px-6"
+  >
     <!-- Logo -->
     <a
       href="/"
-      class="nav-logo inline-flex items-center gap-2 whitespace-nowrap text-white transition-all duration-200 hover:-translate-y-0.5 hover:opacity-70 focus-visible:-translate-y-0.5"
+      class="nav-logo inline-flex min-w-0 shrink items-center gap-1.5 text-white transition-all duration-200 hover:-translate-y-0.5 hover:opacity-70 focus-visible:-translate-y-0.5"
     >
       Quynh Dao
       <svg
@@ -68,33 +70,32 @@ const navLinks = [
       aria-label="Toggle menu"
       aria-expanded="false"
     >
-      <span class="hamburger-bar block h-px w-5 bg-current transition-all duration-300"></span>
-      <span class="hamburger-bar block h-px w-5 bg-current transition-all duration-300"></span>
-      <span class="hamburger-bar block h-px w-5 bg-current transition-all duration-300"></span>
+      <span class="hamburger-bar block h-px w-6 bg-current transition-all duration-300"></span>
+      <span class="hamburger-bar block h-px w-6 bg-current transition-all duration-300"></span>
+      <span class="hamburger-bar block h-px w-6 bg-current transition-all duration-300"></span>
     </button>
   </nav>
 
   <!-- Mobile dropdown -->
   <div
     id="mobile-menu"
-    class="bg-navy/95 hidden flex-col gap-4 px-[6vw] py-6 backdrop-blur-md md:hidden"
+    class="bg-navy/95 hidden flex-col gap-4 px-4 py-6 backdrop-blur-md sm:px-[6vw] md:hidden"
   >
     {
       navLinks.map(({ label, href }) => (
-        <a href={href} class="nav-link text-white/80 transition-colors hover:text-white">
+        <a href={href} class="nav-link text-lg text-white/80 transition-colors hover:text-white">
           {label}
         </a>
       ))
     }
     <a
       href="#contact"
-      class="nav-contact mt-2 inline-flex w-fit rounded-full bg-white px-5 py-2 text-navy-cloud transition-transform hover:-translate-y-0.5"
+      class="nav-contact mt-2 inline-flex w-fit rounded-full bg-white px-6 py-2.5 text-base text-navy-cloud transition-transform hover:-translate-y-0.5"
     >
       contact me
     </a>
   </div>
 </header>
-
 
 <script>
   // Mobile menu toggle

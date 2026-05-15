@@ -1,0 +1,185 @@
+/* ── Timeline wrapper ────────────────────────────── */
+.timeline {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Vertical center line — desktop only */
+.center-line {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .center-line {
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.5);
+  }
+}
+
+/* ── Timeline row ────────────────────────────────── */
+.timeline-row {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+/*
+ * All rows have DOM order: [spacer][marker][card]
+ * .right → normal flex:        [spacer] [marker] [card]  (card on right)
+ * .left  → row-reverse:        [card] [marker] [spacer]  (card on left)
+ */
+.timeline-row.left {
+  flex-direction: row-reverse;
+}
+
+/* ── Spacer (empty half on opposite side) ────────── */
+.timeline-spacer {
+  flex: 0 0 calc(50% - 1.5rem);
+}
+
+/* ── Calendar marker ─────────────────────────────── */
+.timeline-marker {
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+  width: 2rem;
+  height: 2rem;
+  margin: 0 0.5rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.55));
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border: 1.5px solid rgba(255, 255, 255, 0.8);
+  box-shadow:
+    0 2px 8px rgba(36, 95, 156, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timeline-marker svg {
+  color: #04285f;
+  width: 0.875rem;
+  height: 0.875rem;
+  flex-shrink: 0;
+}
+
+/* ── Glass card ──────────────────────────────────── */
+.timeline-card {
+  flex: 0 0 calc(50% - 1.5rem);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0.25) 100%);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 1rem;
+  padding: 1.25rem 1.5rem;
+  box-shadow:
+    0 4px 16px rgba(36, 95, 156, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  transition: transform 250ms ease, box-shadow 250ms ease;
+}
+
+.timeline-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 12px 32px rgba(36, 95, 156, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+/* ── Card typography ─────────────────────────────── */
+.timeline-card-date {
+  font-size: 0.75rem;
+  color: #245f9c;
+  opacity: 0.7;
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+}
+
+.timeline-card-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #04285f;
+  line-height: 1.2;
+  margin-bottom: 0.2rem;
+}
+
+.timeline-card-subtitle {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #245f9c;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-card-bullets {
+  list-style: disc;
+  padding-left: 1.1em;
+  margin: 0.5rem 0 0;
+}
+
+.timeline-card-bullets li {
+  font-size: 0.8rem;
+  color: #245f9c;
+  opacity: 0.85;
+  line-height: 1.6;
+}
+
+/* ── Mobile: single column, line on left ─────────── */
+@media (max-width: 767px) {
+  .timeline {
+    padding-left: 1rem;
+    padding-right: 0;
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    margin-left: 0;
+  }
+
+  /* All rows go left-to-right on mobile */
+  .timeline-row,
+  .timeline-row.left,
+  .timeline-row.right {
+    flex-direction: row !important;
+    align-items: flex-start;
+  }
+
+  /* Hide spacer on mobile */
+  .timeline-spacer {
+    display: none;
+  }
+
+  /* Hide marker on mobile — border-left line is enough */
+  .timeline-marker {
+    display: none;
+  }
+
+  /* Card takes all remaining width */
+  .timeline-card {
+    flex: 1 1 0%;
+    min-width: 0;
+    margin-left: 0;
+    padding: 1rem 1.25rem;
+  }
+}
+
+/* ── Extra-small screens ─────────────────────────── */
+@media (max-width: 480px) {
+  .timeline-card {
+    padding: 0.875rem 1rem;
+  }
+
+  .timeline-card-title {
+    font-size: 1rem;
+  }
+
+  .timeline-card-bullets li {
+    font-size: 0.75rem;
+  }
+}

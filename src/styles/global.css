@@ -3,6 +3,13 @@
 @tailwind utilities;
 
 @layer base {
+  body {
+    background:
+      radial-gradient(circle at top left, rgba(255, 248, 214, 0.25), transparent 18%),
+      linear-gradient(180deg, var(--sky) 0%, #6bbaf5 30%, #82c6f8 60%, var(--sky) 100%);
+    background-attachment: fixed;
+  }
+
   :root {
     /* ── Fonts ──────────────────────────────── */
     --font-display: 'Sora', system-ui, sans-serif;
@@ -57,13 +64,6 @@
     min-height: 100vh;
     width: 100%;
     overflow: hidden;
-    background: linear-gradient(180deg, #3da3f0 0%, var(--sky) 30%, #6bbaf5 60%, var(--sky) 100%);
-  }
-
-  .sky-section-gradient {
-    background:
-      radial-gradient(circle at top left, rgba(255, 248, 214, 0.25), transparent 18%),
-      linear-gradient(180deg, var(--sky) 0%, #6bbaf5 30%, #82c6f8 60%, var(--sky) 100%);
   }
 
   .hero-background {

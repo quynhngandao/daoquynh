@@ -97,6 +97,13 @@ const techStack: TechItem[] = [
     description: 'API Query Language',
   },
   {
+    id: 25,
+    title: 'NestJS',
+    category: 'Backend',
+    icon: 'https://upload.wikimedia.org/wikipedia/commons/a/a8/NestJS.svg',
+    description: 'Node.js Framework',
+  },
+  {
     id: 13,
     title: 'Jest',
     category: 'Testing',
@@ -123,6 +130,20 @@ const techStack: TechItem[] = [
     category: 'Testing',
     icon: 'https://static.intercomassets.com/avatars/1502568/square_128/custom_avatar-1567713303.png',
     description: 'Visual Testing',
+  },
+  {
+    id: 26,
+    title: 'Vitest',
+    category: 'Testing',
+    icon: 'https://v2.vitest.dev/logo.svg',
+    description: 'Unit Testing Framework',
+  },
+  {
+    id: 27,
+    title: 'Playwright',
+    category: 'Testing',
+    icon: 'https://playwright.dev/img/playwright-logo.svg',
+    description: 'E2E Testing',
   },
   {
     id: 17,
@@ -153,13 +174,6 @@ const techStack: TechItem[] = [
     description: 'Data Analytics Platform',
   },
   {
-    id: 21,
-    title: 'Optimizely',
-    category: 'Other',
-    icon: 'https://app.optimizely.com/static/img/rebrand/rebrand-logo.svg',
-    description: 'Experimentation Platform',
-  },
-  {
     id: 22,
     title: 'Git',
     category: 'Other',
@@ -183,15 +197,8 @@ const techStack: TechItem[] = [
 ];
 ---
 
-<section id="skills" class="sky-section-gradient relative px-4 py-20 pb-24 md:px-8 md:py-28">
+<section id="skills" class="relative px-4 py-20 pb-24 md:px-8 md:py-28">
   <div class="mx-auto w-full space-y-8">
-    <h2
-      class="text-center text-2xl font-extrabold uppercase tracking-widest sm:text-3xl lg:text-4xl"
-      style="color: #04285f"
-    >
-      Skills
-    </h2>
-
     <!-- Filter buttons -->
     <div class="flex flex-wrap justify-center gap-3">
       {
@@ -236,7 +243,7 @@ const techStack: TechItem[] = [
 
   <!-- Scroll cue -->
   <a
-    href="#photography"
+    href="#experience"
     class="absolute inset-x-0 bottom-8 flex animate-bounce justify-center text-[#04285f]/60 transition-colors hover:text-[#04285f]"
     aria-label="Next section"
   >

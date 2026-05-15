@@ -6,6 +6,7 @@ import About from '@/components/About.astro';
 import Photography from '@/components/Photography.astro';
 import Skills from '@/components/Skills.astro';
 import Experience from '@/components/Experience.astro';
+import Projects from '@/components/Projects.astro';
 import Contact from '@/components/Contact.astro';
 ---
 
@@ -15,26 +16,11 @@ import Contact from '@/components/Contact.astro';
     <Hero />
     <About />
 
-    <section
-      id="project"
-      class="sky-section-gradient relative flex min-h-screen items-center justify-center"
-    >
-      <h2 class="text-4xl font-bold text-indigo-200">project page</h2>
-      <a
-        href="#experience"
-        class="absolute inset-x-0 bottom-8 flex animate-bounce justify-center text-[#04285f]/60 transition-colors hover:text-[#04285f]"
-        aria-label="Next section"
-      >
-        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"
-          ></path>
-        </svg>
-      </a>
-    </section>
-
-    <Experience />
+    <Projects />
 
     <Skills />
+
+    <Experience />
 
     <Photography />
 

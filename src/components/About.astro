@@ -6,18 +6,10 @@ import '@/styles/animations.css';
   id="about"
   class="relative isolate overflow-hidden px-6 py-24 text-[var(--navy-deep)] md:px-10 md:py-28"
 >
-  <div
-    class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(255,248,214,0.25),_transparent_18%),linear-gradient(180deg,_var(--sky)_0%,_#6bbaf5_30%,_#82c6f8_60%,_var(--sky)_100%)]"
-  >
-  </div>
-
-  <div
-    class="relative mx-auto grid max-w-7xl items-stretch gap-6 lg:grid-cols-[1.03fr_1fr] lg:gap-6"
-  >
-    <div
-      class="slide-in-left border-white/35 bg-white/70 relative overflow-hidden rounded-[2rem] border p-5 shadow-[0_24px_70px_rgba(7,46,108,0.18)] backdrop-blur-md sm:p-8 md:p-12 lg:rounded-l-[2.5rem] lg:rounded-r-[1rem]"
-    >
-      <div class="relative max-w-2xl space-y-8">
+  <div class="about-wrapper slide-in-left mx-auto max-w-7xl">
+    <!-- Text side -->
+    <div class="about-text">
+      <div class="space-y-8">
         <a
           href="https://www.linkedin.com/in/daoquynh29/"
           target="_blank"
@@ -31,9 +23,7 @@ import '@/styles/animations.css';
           </h2>
         </a>
 
-        <div
-          class="space-y-4 text-center text-sm leading-relaxed text-[var(--navy-ink)] sm:space-y-6 sm:text-base"
-        >
+        <div class="space-y-4 text-center text-sm leading-relaxed text-[var(--navy-ink)] sm:space-y-6 sm:text-base">
           <p>
             I'm a University of Minnesota grad who began in pre-med before pivoting into tech for
             its nonstop learning and problem-solving. My previous work—spanning healthcare (with
@@ -49,23 +39,18 @@ import '@/styles/animations.css';
       </div>
     </div>
 
-    <div
-      class="slide-in-right border-white/60 bg-white/90 relative overflow-hidden rounded-[2rem] border p-5 shadow-[0_24px_70px_rgba(7,46,108,0.16)] lg:rounded-l-[1rem] lg:rounded-r-[2.5rem] lg:p-6"
-    >
+    <!-- Image side -->
+    <div class="about-image-panel slide-in-right">
       <div
         class="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[var(--sky-frost)] to-transparent"
-      >
-      </div>
+      ></div>
       <div class="relative flex h-full flex-col gap-4 rounded-[1.5rem] bg-white p-4 md:p-5">
         <div class="px-2">
           <h3 class="text-center text-base font-extrabold tracking-tight text-[var(--navy-deep)] sm:text-xl">
             Sr. Fluff
           </h3>
         </div>
-
-        <div
-          class="overflow-hidden rounded-[1.4rem] border border-[var(--sky-border)] bg-[var(--sky-wash)]"
-        >
+        <div class="overflow-hidden rounded-[1.4rem] border border-[var(--sky-border)] bg-[var(--sky-wash)]">
           <img
             src="/assets/other/fluff.jpeg"
             alt="A fluffy white bunny sitting in the grass"
@@ -78,7 +63,7 @@ import '@/styles/animations.css';
   </div>
 
   <a
-    href="#project"
+    href="#portfolio"
     class="absolute inset-x-0 bottom-8 flex animate-bounce justify-center text-[#04285f]/60 transition-colors hover:text-[#04285f]"
     aria-label="Next section"
   >
@@ -89,6 +74,62 @@ import '@/styles/animations.css';
   </a>
 </section>
 
+<style>
+  .about-wrapper {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    border-radius: 36px;
+    display: grid;
+    grid-template-columns: 1fr;
+    overflow: hidden;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 24px 70px rgba(7, 46, 108, 0.16);
+  }
+
+  @media (min-width: 1024px) {
+    .about-wrapper {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .about-text {
+    display: flex;
+    align-items: center;
+    padding: 48px 40px;
+  }
+
+  .about-text > div {
+    width: 100%;
+  }
+
+  @media (min-width: 640px) {
+    .about-text {
+      padding: 56px 56px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .about-text {
+      padding: 64px 72px;
+    }
+  }
+
+  .about-image-panel {
+    position: relative;
+    overflow: hidden;
+    padding: 32px;
+    background: rgba(255, 255, 255, 0.55);
+    border-top: 1px solid rgba(255, 255, 255, 0.35);
+  }
+
+  @media (min-width: 1024px) {
+    .about-image-panel {
+      border-top: none;
+      border-left: 1px solid rgba(255, 255, 255, 0.35);
+    }
+  }
+</style>
 
 <script>
   const els = document.querySelectorAll('.slide-in-left, .slide-in-right');

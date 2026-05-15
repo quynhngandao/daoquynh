@@ -2,60 +2,99 @@
 interface Project {
   title: string;
   description: string;
-  tech: string[];
-  href?: string;
+  image: string;
+  imageAlt: string;
   repo?: string;
+  href?: string;
+  phoneFrame?: boolean;
 }
 
 const projects: Project[] = [
   {
-    title: 'Project Alpha',
+    title: 'Genderstanding',
     description:
-      'A full-stack web application that does something impressive. Built with modern tooling and deployed to the cloud.',
-    tech: ['Next.js', 'TypeScript', 'PostgreSQL', 'Tailwind'],
-    href: 'https://example.com',
-    repo: 'https://github.com/daoquynh/project-alpha',
+      'A mobile-first web app that allows a safe space for users to invite friends and family to ask anonymous questions',
+    image: '/assets/other/genderstanding.png',
+    imageAlt: 'Genderstanding app screenshots',
+    repo: 'https://github.com/Genderstanding/Genderstanding',
   },
   {
-    title: 'Project Beta',
+    title: 'PLAYwME',
     description:
-      'An open-source tool that solves a real developer pain point. Hundreds of weekly downloads on npm.',
-    tech: ['Node.js', 'TypeScript', 'CLI'],
-    repo: 'https://github.com/daoquynh/project-beta',
+      'A web app that allows users to connect with local shelters and schedule playtime with local shelter animals',
+    image: '/assets/other/playwme.png',
+    imageAlt: 'PLAYwME app screenshot',
+    repo: 'https://github.com/quynhngandao/PLAYwME',
   },
   {
-    title: 'Project Gamma',
+    title: 'DevDogCodeCat',
     description:
-      'An API service powering a mobile app with real-time features and advanced caching strategies.',
-    tech: ['Python', 'FastAPI', 'Redis', 'Docker'],
-    href: 'https://example.com',
-    repo: 'https://github.com/daoquynh/project-gamma',
+      'React Native and Angular quiz platform where software engineers can practice interview questions generated through the OpenAI API',
+    image: '/assets/other/hireme-mobile.gif',
+    imageAlt: 'DevDogCodeCat mobile app',
+    repo: 'https://github.com/PleaseHireMeNow',
+    phoneFrame: true,
   },
 ];
 ---
 
-<section id="projects" class="bg-gray-900/40 py-24">
-  <div class="mx-auto max-w-5xl px-6">
-    <h2 class="mb-12 text-3xl font-bold text-gray-50">Projects</h2>
+<section id="portfolio" class="sky-section-gradient relative overflow-hidden px-4 py-20 pb-24 md:px-8 md:py-28">
+  <div class="relative mx-auto w-full max-w-5xl space-y-12">
+    <h2
+      class="text-center text-2xl font-extrabold uppercase tracking-widest sm:text-3xl lg:text-4xl"
+      style="color: #04285f"
+    >
+      Portfolio <span class="inline-block" aria-hidden="true">✦</span>
+    </h2>
 
     <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {
-        projects.map(({ title, description, tech, href, repo }) => (
-          <article class="flex flex-col rounded-xl border border-gray-800 bg-gray-900 p-6 transition-colors hover:border-gray-700">
-            <div class="mb-4 flex items-start justify-between">
-              <h3 class="text-lg font-semibold text-gray-100">{title}</h3>
-              <div class="ml-2 flex shrink-0 gap-3">
+        projects.map(({ title, description, image, imageAlt, repo, href, phoneFrame }) => (
+          <article class="project-card group flex flex-col">
+            {phoneFrame ? (
+              <div class="flex justify-center rounded-t-[1rem] bg-white/30 pb-3 pt-5">
+                <div class="phone-viewport">
+                  <div class="device device-iphone-14-pro device-silver project-phone-device">
+                    <div class="device-frame">
+                      <img class="device-screen" src={image} alt={imageAlt} loading="lazy" />
+                    </div>
+                    <div class="device-stripe"></div>
+                    <div class="device-header"></div>
+                    <div class="device-sensors"></div>
+                    <div class="device-btns"></div>
+                    <div class="device-power"></div>
+                    <div class="device-home"></div>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div class="rounded-t-[1rem] bg-white/30 pt-5 pb-3">
+                <img
+                  src={image}
+                  alt={imageAlt}
+                  class="h-44 w-full object-contain transition-transform duration-500 group-hover:scale-[1.03] sm:h-52"
+                  loading="lazy"
+                />
+              </div>
+            )}
+
+            <div class="flex flex-1 flex-col gap-4 p-5 sm:p-6">
+              <p class="flex-1 text-sm leading-relaxed text-center" style="color: #245f9c; opacity: 0.85">
+                {description}
+              </p>
+
+              <div class="flex gap-2 flex-wrap justify-center">
                 {repo && (
                   <a
                     href={repo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="GitHub repository"
-                    class="text-gray-500 transition-colors hover:text-gray-300"
+                    class="project-btn"
                   >
-                    <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                    <svg class="h-3.5 w-3.5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.73.084-.73 1.205.085 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.418-1.305.762-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z" />
                     </svg>
+                    {title}
                   </a>
                 )}
                 {href && (
@@ -63,34 +102,109 @@ const projects: Project[] = [
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="Live site"
-                    class="text-gray-500 transition-colors hover:text-gray-300"
+                    class="project-btn project-btn--outline"
+                    aria-label={`Visit ${title} live site`}
                   >
-                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                      />
+                    <svg class="h-3.5 w-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                     </svg>
+                    Live
                   </a>
                 )}
               </div>
             </div>
-
-            <p class="mb-4 flex-1 text-sm leading-relaxed text-gray-400">{description}</p>
-
-            <ul class="flex flex-wrap gap-2">
-              {tech.map((t) => (
-                <li class="text-brand-400 bg-brand-900/20 rounded px-2 py-0.5 font-mono text-xs">
-                  {t}
-                </li>
-              ))}
-            </ul>
           </article>
         ))
       }
     </div>
   </div>
+
+  <!-- Scroll cue -->
+  <a
+    href="#skills"
+    class="absolute inset-x-0 bottom-8 flex animate-bounce justify-center text-[#04285f]/60 transition-colors hover:text-[#04285f]"
+    aria-label="Next section"
+  >
+    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"
+      ></path>
+    </svg>
+  </a>
 </section>
+
+<style>
+  /* Card — matches Experience timeline-card gradient */
+  .project-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0.25) 100%);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 1rem;
+    box-shadow:
+      0 4px 16px rgba(36, 95, 156, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    overflow: hidden;
+    transition: transform 250ms ease, box-shadow 250ms ease;
+  }
+
+  .project-card:hover {
+    transform: translateY(-4px);
+    box-shadow:
+      0 12px 32px rgba(36, 95, 156, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  }
+
+  /*
+   * phone-viewport: fixed visual size of scaled iPhone 14 Pro (428×868 at 0.24 = 103×208px).
+   * The device renders from top-left so layout overflow is hidden without clipping the visual.
+   */
+  .phone-viewport {
+    position: relative;
+    width: 103px;
+    height: 208px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .project-phone-device {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scale(0.24);
+    transform-origin: top left;
+  }
+
+  /* Project button */
+  .project-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.85rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    font-family: 'Sora', system-ui, sans-serif;
+    background: #04285f;
+    color: #fafbfb;
+    border: 1.5px solid #04285f;
+    text-decoration: none;
+    transition: background 150ms ease, color 150ms ease, transform 150ms ease;
+  }
+
+  .project-btn:hover {
+    background: #0b2f6f;
+    border-color: #0b2f6f;
+    transform: translateY(-1px);
+  }
+
+  .project-btn--outline {
+    background: transparent;
+    color: #04285f;
+  }
+
+  .project-btn--outline:hover {
+    background: #04285f10;
+    border-color: #0b2f6f;
+    color: #0b2f6f;
+  }
+</style>

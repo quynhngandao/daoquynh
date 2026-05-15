@@ -36,10 +36,11 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       rel="stylesheet"
     />
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/devices.css/dist/devices.min.css" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
   </head>
-  <body class="bg-sky font-sans text-gray-100 antialiased">
+  <body class="font-sans text-gray-100 antialiased">
     <FloatingBubbles />
     <slot />
   </body>
